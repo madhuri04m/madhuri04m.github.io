@@ -22,9 +22,14 @@
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
 
+
+
 <style>
-/* Additional styles */
-/* General styles */
+
+/*======================================
+//--//-->   ABOUT
+======================================*/
+
 .about-mf .box-shadow-full {
   padding-top: 4rem;
   padding-bottom: 4rem;
@@ -34,15 +39,66 @@
   margin-bottom: 2rem;
 }
 
+.about-mf .about-img img {
+  margin-left: 10px;
+}
+
+
 .skill-mf .progress {
+  /* background-color: #cde1f8; */
   margin: .5rem 0 1.2rem 0;
   border-radius: 0;
   height: .7rem;
 }
+
 .skill-mf .progress .progress-bar {
   height: .7rem;
   background-color: #ffbd39;
 }
+
+
+/* Animation styles */
+#typing-animation {
+  position: relative;
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 3s steps(20, end) infinite;
+}
+
+#typing-animation:before {
+  content: "";
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #ccc;
+  animation: typing-cursor 0.5s ease-in-out infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes typing-cursor {
+  from {
+    width: 5px;
+  }
+  to {
+    width: 0;
+  }
+}
+
+
+/* project image zoom effect */
 
 .zoom-effect {
   overflow: hidden;
@@ -52,124 +108,277 @@
 .zoom-effect:hover {
   transform: scale(1.1);
 }
+
+
 </style>
+
 
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-    
+	  
+	  
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">Madhuri Madineni</a>
-        <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="oi oi-menu"></span> Menu
-        </button>
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html">Madhuri Madineni</a>
+	      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
 
-        <div class="collapse navbar-collapse" id="ftco-nav">
-          <ul class="navbar-nav nav ml-auto">
-            <li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
-            <li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
-            <li class="nav-item"><a href="#resume-section" class="nav-link"><span>Resume</span></a></li>
-            <li class="nav-item"><a href="#project-section" class="nav-link"><span>Projects</span></a></li>
-            <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav nav ml-auto">
+	          <li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
+	          <li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
+	          <li class="nav-item"><a href="#resume-section" class="nav-link"><span>Resume</span></a></li>
+	          <li class="nav-item"><a href="#project-section" class="nav-link"><span>Projects</span></a></li>
+	          <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+	  <section id="home-section" class="hero">
+		  <div class="home-slider  owl-carousel">
+	       <div class="slider-item ">
+	      	<div class="overlay"></div>
+	         <div class="container">
+	          <div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
+	          	<div class="one-third js-fullheight order-md-last img" style="background-image:url(images/bg_2.png);">
+	          	 <div class="overlay"></div>
+	          	</div>
+		          <div class="one-forth d-flex  align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+		          	<div class="text">
+		          		<span class="subheading">Hello!</span>
+			            <h1 class="mb-4 mt-3">I'm <span>Madhuri Madineni</span></h1>
 
+						<!-- Element to contain animated typing -->
+						<span id="typing-animation"></span>
+
+						<script>
+
+						// Initialize the typing animation
+						const typingAnimationElement = document.getElementById('typing-animation');
+
+						// Create an array of typing text
+						const typingTexts = [
+						'Aspiring Data Analyst  ',
+						'Open to Work  ',
+						];
+
+						// Create a function to display the typing animation for a given text
+						function playTypingAnimation(text) {
+						// Loop through each character and add it to the element
+						for (let i = 0; i < text.length; i++) {
+							setTimeout(() => {
+							typingAnimationElement.textContent += text[i];
+							}, i * 200); // Increase the delay to slow down the typing animation
+						}
+
+						// Once the animation is complete, reset the text and start over
+						setTimeout(() => {
+							typingAnimationElement.textContent = '';
+							playTypingAnimation(typingTexts[(typingTexts.indexOf(text) + 1) % typingTexts.length]);
+						}, text.length * 200);
+						}
+
+						// Start the typing animation loop
+						playTypingAnimation(typingTexts[0]);
+
+						</script>
+
+						<br>
+						<br>
+						<!-- <h2 class="d-flex" style="margin-bottom: 0">With over 5 years of experience</h2> -->
+						<!-- <br> -->
+			            <p><a href="https://www.linkedin.com/in/madhuri-madineni-03b60a271/" class="btn btn-primary py-3 px-4">LinkedIn</a> 
+							<a href="https://github.com/madhuri04m" class="btn btn-white btn-outline-white py-3 px-4">GitHub</a></p>
+		            </div>
+		          </div>
+	        	</div>
+	        </div>
+	      </div>
+		</div>
+    </section>
+
+
+
+    <section class="ftco-about img ftco-section ftco-no-pb" id="about-section">
+    	<div class="container">
+			<div class="row">
+				<div class="row d-flex align-items-stretch">
+				<!-- <div class="row d-flex"> -->
+					<div class="col-md-6 col-lg-5 d-flex">
+						<div class="img-about img d-flex align-items-stretch">
+							<div class="overlay">
+								<div class="row">
+									<div class="col-sm-6 col-md-5">
+									  <div class="about-img">
+										<img src="images/about-me.png" class="img-fluid rounded b-shadow-a" alt="">
+									  </div>
+									</div>
+									<!-- Details next to profile image -->
+									<div class="col-sm-6 col-md-7">
+									  <div class="about-info">
+										<p><span class="title-s">Name: </span> <span>Madhuri Madineni</span></p>
+										<p><span class="title-s">Qualification: </span> <span>B.Tech in Computer Science and Engineering</span></p>
+										<p><span class="title-s">Address: </span> <span> Andhra Pradesh,India</span></p>
+									  </div>
+									</div>
+								  </div>
+
+								<div class="skill-mf">
+									<p class="title-s">Skills</p>
+									<span>SQL</span> <span class="pull-right">80%</span>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: 95%;" aria-valuenow="95" aria-valuemin="0"
+											aria-valuemax="100"></div>
+									</div>
+									
+									<span>PYTHON</span> <span class="pull-right">85%</span>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0"
+											aria-valuemax="100"></div>
+									</div>
+									
+									<span>Data Visualization</span> <span class="pull-right">90%</span>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0"
+											aria-valuemax="100"></div>
+									</div>
+									
+									<span>Microsoft Excel</span> <span class="pull-right">85%</span>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0"
+											aria-valuemax="100"></div>
+									</div>
+									
+									<span>Power BI</span> <span class="pull-right">80%</span>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0"
+											aria-valuemax="100"></div>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-md-6 col-lg-7 pl-lg-5 pb-5">
+						<div class="row justify-content-start pb-3">
+							<div class="col-md-12 heading-section ftco-animate">
+								
+								<h1 class="big">About</h1>
+								<h2 class="mb-4">About Me</h2>
+								
+								<p>In my data analytics portfolio, I'm dedicated to transforming raw data into actionable insights. With expertise in statistical analysis, data visualization, and data modeling, I thrive on tackling complex challenges and delivering innovative solutions. Skilled in Python, Excel, Power BI and SQL, I excel in extracting meaningful information from diverse datasets. My strength lies in communicating findings effectively to stakeholders, fostering collaboration, and driving decision-making. Committed to continuous learning, I stay updated with the latest technologies and methodologies. Beyond analytics, I enjoy readings, maintaining a balanced lifestyle.</p>
+								<ul class="about-info mt-4 px-md-0 px-2">
+									<li class="d-flex"><span>Profile:</span> <span>Data Science &amp; Analytics</span></li>
+									<li class="d-flex"><span>Education:</span> <span>Bachelor of Technology</span></li>
+									<li class="d-flex"><span>Language:</span> <span>English, Telugu, Hindi</span></li>
+									<li class="d-flex"><span>Technologies:</span> <span>Python,SQL & Java(Basics)</span></li>
+									<li class="d-flex"><span>BI Tools:</span> <span>Microsoft Power BI &amp; Tableau</span></li>
+									<li class="d-flex"><span>Other Skills:</span> <span>Excel, Google Analytics &amp; Ms Word</span></li>
+									<li class="d-flex"><span>Interest:</span> <span>Traveling, Cooking</span></li>
+									
+								</ul>
+							</div>
+						</div>
+
+
+						<div class="counter-wrap ftco-animate d-flex mt-md-3">
+							<div class="text">
+								<p class="mb-4">
+									<span class="number" data-number="5">0</span> <span>+</span>
+									<span>&nbsp; Projects completed</span>
+								</p>
+								<p><a href="https://www.linkedin.com/in/madhuri-madineni-03b60a271/" class="btn btn-primary py-3 px-3">LinkedIn</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </section>
+
+
+
+	
     <section class="ftco-section ftco-no-pb" id="resume-section">
-      <div class="container">
-        <div class="row justify-content-center pb-5">
+    	<div class="container">
+    		<div class="row justify-content-center pb-5">
           <div class="col-md-10 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Resume</h1>
+          	<h1 class="big big-2">Resume</h1>
             <h2 class="mb-4">Resume</h2>
             <p>As a proactive learner, I'm continuously exploring new tools and techniques to stay ahead in the ever-evolving field of data analytics. My goal is to contribute my skills and expertise to drive innovation and make a meaningful impact in the data-driven landscape.</p>
           </div>
         </div>
 
-        <div class="row">
-          <h1 class="big-4">Experience</h1>
-          <div class="underline"></div>
-        </div>
-        <br>
-        
-        <div class="row">
-          <div class="col-md-6">
-            <div class="resume-wrap ftco-animate">
-              <span class="date">01/2025 - Present</span>
-              <h2>Finance IT Business Analyst Intern</h2>
-              <span class="position">Motorola Solutions</span>
-              <p class="mt-4">Location: Bangalore Offsite
-                <ul>
-                  <li>Currently undergoing Oracle EBS training, focusing on financial modules.</li>
-                  <li>Collaborating with cross-functional teams to optimize financial processes and reporting.</li>
-                  <li>Mentored by experienced professionals in financial technology solutions.</li>
-                </ul>
-              </p>
-            </div>
-          </div>
+		<div class="row">
+			<h1 class="big-4">Experience</h1>
+			<div class="underline"></div>
+		</div>
+		<br>
+		
+		<div class="row">
+				<div class="col-md-6">
+					<div class="resume-wrap ftco-animate">
+						<span class="date">December'2023 - January'2024</span>
+						<h2>December'2023 - January'2024</h2>
+						<span class="position">Edunet Foundation, Remote</span>
+						<p class="mt-4">EY Global Delivery Services in collaboration with AICTE
+							<ul>
+								<li>I've successfully completed a 6-week internship with EY Global Delivery Services in collaboration with AICTE, focusing on Advanced Data Analytics under the Next Gen Employability Program 2023-24.</li>
+								<li>Developed time series forecasting models to predict sales and optimize marketing budgets, got model performance of 92%.</li>
+							</ul>
+						</p>
+					</div>
 
-          <div class="col-md-6">
-            <div class="resume-wrap ftco-animate">
-              <span class="date">December'2023 - January'2024</span>
-              <h2>Intern</h2>
-              <span class="position">Edunet Foundation, Remote</span>
-              <p class="mt-4">EY Global Delivery Services in collaboration with AICTE
-                <ul>
-                  <li>Completed a 6-week internship focusing on Advanced Data Analytics under the Next Gen Employability Program 2023-24.</li>
-                  <li>Developed time series forecasting models to predict sales and optimize marketing budgets, achieving 92% model performance.</li>
-                  <li>Mentored peers on data modeling best practices.</li>
-                </ul>
-              </p>
-            </div>
-          </div>
-        </div>
+				</div>
+			</div>
 
-        <br>
-        <br>
+		<br>
+		<br>
 
-        <div class="row">
-          <h1 class="big-4">Education</h1>
-          <div class="underline"></div>
-        </div>
-        <br>
-        
-        <div class="row">
-          <div class="col-md-6">
-            <div class="resume-wrap ftco-animate">
-              <span class="date">2021-2025</span>
-              <h2>Bachelor of Technology</h2>
-              <span class="position">Vellore Institute Of Technology (VIT-AP)</span>
-              <p class="mt-4">CGPA: 8.55</p>
-            </div>
-          </div>
+		<div class="row">
+			<h1 class="big-4">Education</h1>
+			<div class="underline"></div>
+		</div>
+		<br>
+		
+			<div class="row">
+    			<div class="col-md-6">
+    				<div class="resume-wrap ftco-animate">
+    					<span class="date">2021-2025</span>
+    					<h2>Bachelor of Technology</h2>
+    					<span class="position">Vellore Institute Of Technology(VIT-AP)</span>
+    					<p class="mt-4">CGPA: 8.55</p>
+    				</div>
+    			</div>
 
-          <div class="col-md-6">
-            <div class="resume-wrap ftco-animate">
-              <span class="date">2019-2021</span>
-              <h2>12th</h2>
-              <span class="position">Sri Chaitanya Mahila Jr Kalasala</span>
-              <p class="mt-4">Percentage: 91.9%</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    			<div class="col-md-6">
+    				<div class="resume-wrap ftco-animate">
+    					<span class="date">2019-2021</span>
+    					<h2>12th</h2>
+    					<span class="position">Sri Chaitanya Mahila Jr Kalasala</span>
+    					<p class="mt-4">Percentage: 91.9%</p>
+    				</div>
+				</div>
+    		</div>
+
+
+			<div class="col-md-6">
+				<div class="resume-wrap ftco-animate">
+					<span class="date">2018-2019</span>
+					<h2>12th</h2>
+					<span class="position">Bhashyam High School</span>
+					<p class="mt-4">CGPA: 9.7</p>
+				</div>
+			</div>
+		</div>
+
     </section>
 
-    <section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18">
-              <div class="text">
-                <strong class="number" data-number="5">0</strong>
-                <span>Projects</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-<section class="ftco-section" id="project-section">
+   
+
+    <section class="ftco-section" id="project-section">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-5">
           <div class="col-md-7 heading-section text-center ftco-animate">
